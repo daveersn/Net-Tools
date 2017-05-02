@@ -28,6 +28,8 @@ class window:
         self.ip = self.ip_entry.get()
         self.num_ip = socket.gethostbyname(self.ip)
         self.ip_label.configure(text="IP Address ({})".format(self.ip))
+        if self.operating_mode == 0:
+            self.port_label.configure(text="Port ({})".format(self.port))
         print "[DEBUG] - Getting ip({}) from entry.".format(self.num_ip)
         if self.operating_mode == 0:
             self.port = self.port_entry.get()
@@ -38,7 +40,8 @@ class window:
             print "[DEBUG] - Port: {}".format(self.port)
             print "[DEBUG] - Ip: {}".format(self.ip)
             print "[DEBUG] - Starting single port scan"
-            if Net.single_scan(self.ip, self.port) == 0:
+            Net.single_scan(self.ip, self.port)
+            if Net.result == 1:
                 print "[DEBUG] - [V] Port {} on {} is opened".format(self.port, self.ip)
             else:
                 print "[DEBUG] - [X] Port {} on {} is closed".format(self.port,self.ip)
