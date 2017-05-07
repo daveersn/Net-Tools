@@ -1,5 +1,6 @@
 from WindowClass import *
+import Tkinter
 
-root = Tk()
-Windows = window(root)
+root = Tkinter.Tk()
+Window = Window(root)
 root.mainloop()
